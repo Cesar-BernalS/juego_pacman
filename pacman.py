@@ -12,6 +12,8 @@ Exercises
 from random import choice
 from turtle import *
 import numpy as np
+from time import perf_counter
+from time import time
 
 from freegames import floor, vector
 
@@ -20,11 +22,12 @@ path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
+ghosts_vel = 5
 ghosts = [
-    [vector(-180, 160), vector(5, 0)],
-    [vector(-180, -160), vector(0, 5)],
-    [vector(100, 160), vector(0, -5)],
-    [vector(100, -160), vector(-5, 0)],
+    [vector(-180, 160), vector(ghosts_vel, 0)],
+    [vector(-180, -160), vector(0, ghosts_vel)],
+    [vector(100, 160), vector(0, ghosts_vel)],
+    [vector(100, -160), vector(-5, ghosts_vel)],
 ]
 # fmt: off
 tiles = [
@@ -107,11 +110,13 @@ def world():
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'white')
 
-
+vel_g = 100 # Mariana Guerrero Pérez - A00840918
+start_time = time()
 def move():
     """Move pacman and all ghosts."""
     writer.undo()
     writer.write(state['score'])
+    global vel_g, start_time # Variables de cambio de velocidad
 
     clear()
 
@@ -130,7 +135,7 @@ def move():
     up()
     goto(pacman.x + 10, pacman.y + 10)
     dot(20, 'yellow')
-
+    
     for point, course in ghosts:
         if valid(point + course):
             point.move(course)
@@ -154,8 +159,13 @@ def move():
     for point, course in ghosts:
         if abs(pacman - point) < 20:
             return
+        
+    if time() - start_time > 1: #Actualizar velocidad con time cada segundo
+        vel_g = max(10, vel_g - 2) # acelerar 2ms
+        start_time = time() #reiniciar start_time
+        #print(vel_g)
 
-    ontimer(move, 100)
+    ontimer(move, vel_g) #actualizar con variabl vel_g
 
 
 def change(x, y):
