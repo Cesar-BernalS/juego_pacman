@@ -26,6 +26,9 @@ ghosts = [
     [vector(100, -160), vector(-5, 0)],
 ]
 # fmt: off
+
+#Cesar Tadeo Bernal Sauceda - A00841810
+#Regina Aguilar Garcia - A00841923
 tiles = [
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     0,1,1,1,0,1,1,1,0,1,1,1,0,1,1,1,1,0,1,0,
