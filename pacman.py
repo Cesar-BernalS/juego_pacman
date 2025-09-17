@@ -164,7 +164,7 @@ def move():
             return
         
     if time() - start_time > 1: #Actualizar velocidad con time cada segundo
-        vel_g = max(10, vel_g - 2) # acelerar 2ms
+        vel_g = max(10, vel_g - 5) # acelerar 5ms
         start_time = time() #reiniciar start_time
         #print(vel_g)
 
