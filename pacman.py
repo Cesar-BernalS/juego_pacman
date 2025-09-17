@@ -113,7 +113,7 @@ def world():
                 path.goto(x + 10, y + 10)
                 path.dot(2, 'white')
 
-vel_g = 100 # Mariana Guerrero Pérez - A00840918
+vel_g = 100 # Mariana Guerrero Pérez - A00840918, #Gianmarco Barboza Alvarado - A00843087
 start_time = time()
 def move():
     """Move pacman and all ghosts."""
