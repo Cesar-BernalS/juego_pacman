@@ -11,7 +11,6 @@ Exercises
 
 from random import choice
 from turtle import *
-import numpy as np
 
 from freegames import floor, vector
 
